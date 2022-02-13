@@ -1,0 +1,4 @@
+FROM php:7.4-apache
+COPY test.php /var/www/html
+COPY index.php.php /var/www/html
+RUn docker-php-ext-install mysqli

@@ -1,0 +1,128 @@
+<html>
+
+<head>
+
+//css
+
+<style>
+
+table
+
+{
+
+border-style:solid;
+
+border-width:2px;
+
+border-color:pink;
+
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#EEFDEF">
+
+<?php
+
+$con = mysql_connect("localhost","root","");
+
+if (!$con)
+
+  {
+
+  die('Could not connect: ' . mysql_error());
+
+  }
+
+ 
+
+mysql_select_db("smart", $con);
+
+ 
+
+$result = mysql_query("SELECT * FROM Form");
+
+ 
+
+echo "<table border='1'>
+
+<tr>
+
+<th>Id</th>
+
+<th>name</th>
+
+<th>Mobile</th>
+
+<th>email</th>
+
+</tr>";
+
+ 
+
+while($row = mysql_fetch_array($result))
+
+  {
+
+  echo "<tr>";
+
+  echo "<td>" . $row['Id'] . "</td>";
+
+  echo "<td>" . $row['name'] . "</td>";
+
+  echo "<td>" . $row['Mobile'] . "</td>";
+
+  echo "<td>" . $row['email'] . "</td>";
+
+  echo "</tr>";
+
+  }
+
+echo "</table>";
+
+ 
+
+mysql_close($con);
+
+?>
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>db-uas</title>
+</head>
+<body>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nama</th>
+    <th>Alamat</th>
+    <th>Jabatan</th>
+  </tr>
+    <?php
+    $conn = new mysqli("172.19.0.2","root", "uas-sa" , "User");
+    if($conn -> connect_error){
+        die('Connection to Database Error!'.$conn->error);
+    }
+    $db_query = "SELECT * FROM user";
+    $res = $conn->query($db_query);
+    while($row = $res->fetch_assoc()){
+    ?>
+            <tr>
+            <td><?=$row['ID'];?></td>
+            <td><?=$row['Nama'];?></td>
+            <td><?=$row['Alamat'];?></td>
+            <td><?=$row['Jabatan'];?></td>
+            </tr>
+    <?php
+    }
+    ?>
+</body>
+</html>

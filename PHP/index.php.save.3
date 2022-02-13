@@ -1,0 +1,87 @@
+<html>
+
+<head>
+
+//css
+
+<style>
+
+table
+
+{
+
+border-style:solid;
+
+border-width:2px;
+
+border-color:pink;
+
+}
+
+</style>
+
+</head>
+
+<body bgcolor="#EEFDEF">
+
+<?php
+
+$con = mysqli_connect("172.19.0.2","root","uas-sa");
+
+if (!$con)
+
+  {
+
+  die('Could not connect: ' . mysqli_error());
+
+ 
+
+$result = mysqli_query("SELECT * FROM User");
+
+ 
+
+echo "<table border='1'>
+
+<tr>
+
+<th>ID</th>
+
+<th>Nama</th>
+
+<th>Alamat</th>
+
+<th>Jabatan</th>
+
+</tr>";
+
+ 
+
+while($row = mysqli_fetch_array($result))
+
+  {
+
+  echo "<tr>";
+
+  echo "<td>" . $row['ID'] . "</td>";
+
+  echo "<td>" . $row['Nama'] . "</td>";
+
+  echo "<td>" . $row['Alamat'] . "</td>";
+
+  echo "<td>" . $row['Jabatan'] . "</td>";
+
+  echo "</tr>";
+
+  }
+
+echo "</table>";
+
+ 
+
+mysqli_close($con);
+
+?>
+
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+FROM mysql
+COPY MYSQL_DATABASE User
+COPY trucorp-db.sql /docker-entrypoint-initdb.d
+
